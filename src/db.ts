@@ -46,6 +46,33 @@ const db={
       
         },
     ],
+    users:[
+        {
+        userID:1,
+        firstName:"Mauno",
+        lastName: "Malva",
+        email:"malva@malva.ee",
+        password: "$2b$10$9dxAOVLOoHnub5K0EdbZn.c0p5ojpgO72UtGElTm4nEIdusiChGJG"
+        
+        },
+        {
+        userID:2,
+        firstName:"Pille",
+        lastName: "Pilv",
+        email: "pilv@pilv.ee",
+        password: "$2b$10$rgfrrhbfxfHErcROPH0CN.0MV.HHOL/bhGBB/LTy9iutJcT7n45rC"
+        
+      
+        },
+        {
+        userID: 3,
+        firstName: "Mille",
+        lastName: "Milv",
+        email: "milv@milv.ee",
+        password: "$2b$10$tL7JIRhfSqol2llIuneqNOSa6iomRFV5zm6S6HqIBuGB6JhrMTpEy"
+        
+          },
+    ]
 
 }
 export default db;

@@ -5,8 +5,9 @@ import roomsService from './service';
 
 const roomsControllers={
     getAllRooms:(req: Request,res: Response )=>{
+        const rooms=roomsService.getAllRooms();
         return res.status(responseCodes.ok).json({
-            rooms:db.rooms,
+            rooms,
         });
     },
    getRoomById : (req: Request,res: Response )=>{

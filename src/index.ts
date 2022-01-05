@@ -1,11 +1,13 @@
-import express, {Request, Response, Application, request} from 'express';
+import express, {Request, Response, Application,} from 'express';
 import db from './db';
 import lecturersControllers from './components/lecturers/controller';
 import responseCodes from './components/general/responseCodes';
-import logger from './components/general/logger';
+import {logger, createLectureValidator} from './components/general/middleware';
 import coursesControllers from './components/courses/controller';
 import subjectsControllers from './components/subjects/controller';
 import roomsControllers from './components/rooms/controller';
+import usersControllers from './components/users/controller';
+import authController from './components/auth/controller';
 
 const app: Application=express();
 app.use(express.json());
@@ -21,11 +23,13 @@ app.get('/ping', (req: Request,res: Response )=>{
         message: 'Olete sisenenud tunniplaani API'
     });
 });
+//login
+app.post('/login', authController.login);
 
 //lecturers
 app.get('/lecturers',lecturersControllers.getAllLecturers);
 app.get('/lecturers/:id',lecturersControllers.getLecturerById);
-app.post('/lecturers',lecturersControllers.createLecturer );
+app.post('/lecturers', createLectureValidator,lecturersControllers.createLecturer );
 app.delete('/lecturers/:id',lecturersControllers.deleteLecturer);
 app.patch('/lecturers/:id', lecturersControllers.updateLecturer);
 
@@ -51,6 +55,13 @@ app.get('/rooms/:id',roomsControllers.getRoomById);
 app.post('/rooms', roomsControllers.createRoom);
 app.delete('/rooms/:id', roomsControllers.deleteRoom);
 app.patch('/rooms/:id', roomsControllers.uptadeRoom);
+
+//users
+app.get('/users', usersControllers.getAllusers);
+app.get('/users/:id', usersControllers.getUserById);
+app.post('/users', usersControllers.createUser);
+app.delete('/users/:id',usersControllers.deleteUser);
+app.patch('/users/:id', usersControllers.updateUser);
 
 
 app.listen(port, ()=>{
