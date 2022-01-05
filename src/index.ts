@@ -29,7 +29,7 @@ app.post('/login', authController.login);
 //lecturers
 app.get('/lecturers',lecturersControllers.getAllLecturers);
 app.get('/lecturers/:id',lecturersControllers.getLecturerById);
-app.post('/lecturers', createLectureValidator,lecturersControllers.createLecturer );
+app.post('/lecturers', createLectureValidator, lecturersControllers.createLecturer );
 app.delete('/lecturers/:id',lecturersControllers.deleteLecturer);
 app.patch('/lecturers/:id', lecturersControllers.updateLecturer);
 

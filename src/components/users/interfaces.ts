@@ -1,10 +1,11 @@
 interface NewUser{
-    email:string;
-    password:string;
     firstName:string;
     lastName:string;
-    role: 'Admin' | 'User';
+    email:string;
+    password:string;
+    role: string;
 }
+
 interface User extends NewUser{
     userID:number
 }
